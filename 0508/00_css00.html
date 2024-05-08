@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 기초</title>
+    <link rel="stylesheet" href="00_css00.css">
+</head>
+<body>
+    <h1>css</h1>
+    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis cupiditate, laudantium vitae dolore quaerat rem. Dolores sint modi voluptatum rerum tempora odio quia veritatis minus, sunt saepe tempore, aut voluptatem?</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium veritatis quas eum dolorum necessitatibus aperiam ab, nihil, eius nemo, hic ex! Tempora porro enim hic dicta consequatur corrupti, delectus adipisci.</div>
+    <hr><br>
+
+
+    <h3>CSS 사용법 1. 인라인 스타일</h3>
+    <div>각각 태그 속성에 style 속성값을 선언하여 인라인으로 적용하는 방법</div>
+    <br>
+    
+    <div style="color:red; background-color : blue;">
+        인라인 적용 라인
+    </div>
+    
+    <h3>CSS 사용법 2. 내부 스타일 시트</h3>
+    <div>HTML 문서 안에 &lt; sytle=&lt; 태그로 선언하는 방법</div>
+    <div>가급적 헤더에 있는 것이 원칙이지만 body존재하는 경우도 있다</div>
+    <br>
+    <style>
+        .class1{
+            color: blue;
+            background: #000;
+        }
+    </style>
+    <div class="class1">
+        class 적용
+    </div>
+    <div class="class4">
+        class 미적용
+    </div>
+
+    <hr><br>
+
+    <h3>CSS 사용법 3. 외부 스타일 시트 - 표준적인 방법 ★</h3>
+    <div>별도의 css 확장파일을 통해 import 하여 사용하는 방법</div>
+    <div>head에 link 태그를 통해 참조를 선언하여 활용 가능</div>
+    <br>
+    <div id="id1">
+        id1의 외부 스타일 시트 적용영역입니다.
+    </div>
+    <div class="class2">
+        class2의 외부 스타일 시트 적용영역입니다.
+    </div>
+    <div class="class3">
+        class3의 외부 스타일 시트 적용영역입니다.
+    </div>
+
+</body>
+</html>

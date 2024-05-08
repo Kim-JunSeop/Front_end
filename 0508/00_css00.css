@@ -1,0 +1,18 @@
+/* 이곳은 css 문법만 가능하는 범위 */
+
+*{
+    font-weight: bold;
+}
+
+#id1
+{
+    color: red;;
+    background:blue;
+}
+
+/* 클래스 선택자 = */
+.class2, .class3
+{
+    color: white;
+    background: #000;
+}
