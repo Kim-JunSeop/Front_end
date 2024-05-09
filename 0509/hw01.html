@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 웹 패턴</title>
+</head>
+
+<body>
+    <style>
+        .text {
+            display: none;
+            color: pink;
+            text-align: center;
+        }
+        @media screen and (max-width:767px) {
+            .text1 {
+                background-color: black;
+                width: 300px;
+                height: 100px;
+                display: block;
+            }
+        }
+
+        @media screen and (min-width:768px) and (max-width:959px) {
+            .text2 {
+                background-color: yellow;
+                width: 300px;
+                height: 100px;
+                display: block;
+            }
+        }
+
+        @media screen and (min-width:960px) {
+            .text3 {
+                background-color: skyblue;
+                width: 300px;
+                height: 100px;
+                display: block;
+            }
+        }
+    </style>
+    <div class="text text1">
+        블랙핑크
+    </div>
+    <div class="text text2">
+        옐로우핑크
+    </div>
+    <div class="text text3">
+        그린핑크
+    </div>
+
+</body>
+
+</html>
