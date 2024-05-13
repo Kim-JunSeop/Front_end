@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 - 함수</title>
+    <style>
+        body{
+            font-weight: bold;
+        }
+        input{
+            background-color: #FFFE00;
+        }
+        button{
+            background-color: lime;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    구매상점 입력 : <input type="text" name="" id="storeName"><br><br>
+    결제금액 입력 : <input type="text" name="" id="paymentAmount">
+    <hr color="red" size="5">
+    결제 수단 선택 
+    <select id="paymentMethod" onchange="adjustPayment()">
+        <option value="bankTransfer">계좌이체</option>
+        <option value="creditCard">신용카드</option>
+        <option value="mobilePayment">휴대폰 결제</option>
+    </select>
+    <br>
+    <br><hr color="red" size="5"><br>
+    <button onclick="calculatePayment()">결제금액 계산</button>
+    
+    <p id="result"></p> 
+    <script>
+        function adjustPayment() {
+            var paymentMethod = document.getElementById("paymentMethod").value;
+            var paymentAmountInput = document.getElementById("paymentAmount");
+            var currentAmount = parseInt(paymentAmountInput.value);
+            
+            if (paymentMethod === "creditCard") {
+                paymentAmountInput.value = currentAmount + 1000;
+            } else if (paymentMethod === "mobilePayment") {
+                paymentAmountInput.value = currentAmount + 500;
+            }
+        }
+        
+        function calculatePayment() {
+            var storeName = document.getElementById("storeName").value;
+            var paymentAmount = document.getElementById("paymentAmount").value;
+            
+            var resultElement = document.getElementById("result");
+            resultElement.innerText = storeName + "에서 최종 결제 금액 : " + paymentAmount;
+        }
+    </script>
+</body>
+</html>

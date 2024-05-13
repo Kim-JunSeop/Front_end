@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - 함수</title>
+</head>
+<body>
+    아이디 입력 : <input type="text" id="idInput"><button onclick="idCheck()">아이디 체크</button>
+    <hr>
+    패스워드 : <input type="password" id="pwInput">
+    <br>
+    패스워드 확인 : <input type="password" id="pwCheck">
+    <br>
+    <button onclick="checkPassword()">확인</button>
+    <div id="result"></div>
+    <script>
+        function idCheck(){
+            var idTag = document.getElementById("idInput");
+            var idValue = idTag.value;
+
+            if(idValue.length >=5){
+                result = "5글자 이상입니다 유효";
+            }
+            else{
+                result = "5글자 미만입니다 재입력 해주세요";
+            }
+            var divTag = document.getElementById("result");
+            alert(result);
+        }
+
+        function checkPassword(){
+            var pwTag = document.getElementById("pwInput");
+            var pwValue = pwTag.value;
+            var pwCheckTag = document.getElementById("pwCheck");
+            var pwCheckValue = pwCheckTag.value;
+            var result = "";
+
+            if(pwValue === pwCheckValue){
+                result = "일치!! <img src=img/1.jpg>"
+            }
+            else{
+                result = "불일치!! <img src=img/2.jpg>"
+            }
+            var divTag = document.getElementById("result");
+            divTag.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

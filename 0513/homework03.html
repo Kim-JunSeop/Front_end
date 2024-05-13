@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 - 함수</title>
+
+    <style>
+        div{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        table{
+            display: inline-block;
+        }
+        #first, #second, #third{
+            text-align: center;
+        }
+        #first{
+            background-color: #00FE00;
+        }
+        #second{
+            background-color: #FC9B00;
+        }
+        #third{
+            background-color: #750075;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <table  border="1">
+        <tr>
+          <td width="500px" id="first"><div onclick="changeJeju()">제주도로</div></td>
+        </tr>
+        <tr>
+            <td width="500px" id="second"><div onclick="changeJapan()">일본으로</div></td>
+          </tr>
+          <tr>
+            <td width="500px" id="third"><div onclick="changeHawaii()">하와이로</div></td>
+          </tr>
+          <tr>
+            <td height="50px" id="fourth"><hr color="red">힘들다!! 우리도 떠나자!!<hr color="red"></td>
+          </tr>
+          <tr>
+            <td height="250px" id="imag"><img src="img/1.jpg" alt=""></td>
+          </tr>
+    </table>
+
+    <script>
+        function changeJeju() {
+            var imgElement = document.querySelector("#imag img");
+            imgElement.src = "img/com.jpg";
+        }
+        function changeJapan() {
+            var imgElement = document.querySelector("#imag img");
+            imgElement.src = "img/horse.jpg";
+        }
+        function changeHawaii() {
+            var imgElement = document.querySelector("#imag img");
+            imgElement.src = "img/sunset.jpg";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 - 함수</title>
+    <style>
+        #result {
+            color: red;
+        }
+
+        button {
+            background-color: #A2C692;
+        }
+    </style>
+</head>
+<body>
+    아이디<input type="text" id="id"> <button onclick="idCheck()">아이디체크</button>
+    <div id="result"></div>
+    <br><hr>
+    지식인 검색어 <input type="text" id="searchInput"><button onclick="search()">지식인검색</button>
+    <br><hr>
+    보고 싶은 웹툰 입력 <input type="text" id="comicInput"><button onclick="comic()">보고 싶은 웹툰</button>
+    <script>
+        function idCheck() {
+            var idTag = document.getElementById("id");
+            var idValue = idTag.value;
+            var resultDisplay = document.getElementById("result");
+            var result;
+            if (idValue === "root") {
+                result = "아이디 성공";
+            } else {
+                result = "아이디 실패";
+            }
+            resultDisplay.textContent = result;
+        }
+
+        function search() {
+            var searchInput = document.getElementById('searchInput').value;
+            window.location.href = "https://kin.naver.com/search/list.naver?query=" + searchInput;
+        }
+
+        function comic(){
+            var comicInput = document.getElementById('comicInput').value;
+            window.location.href = "https://comic.naver.com/search?keyword=" + comicInput;
+        }
+    </script>
+</body>
+</html>
