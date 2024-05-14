@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 선택자</title>
+</head>
+<body>
+    <style>
+        li{
+            list-style: none;
+            float: left;
+            padding: 15px;
+            width: 70;
+            height: 20px;
+            border-radius: 50px;
+            text-align: center;
+            color: red;
+        }
+        li:nth-child(2n+1){
+            background-color: orange;
+        }
+        li:nth-child(2n){
+            background-color: hotpink;
+        }
+        a{
+            text-decoration: none;
+            font-weight: bold;
+            color: red;
+        }
+        #top2{
+            background-color: black;
+            width: 250px;
+            height: 100px;
+            margin: 25px;
+            position: fixed;
+            top: 0%;
+            right: 60%;
+            border-radius: 100px 10px;
+            color: yellow;
+
+        }
+        #top{
+            width: 800px;
+            height: 100px;
+            background-color: lime;
+            padding: 2px;
+        }
+       
+       .product{
+        margin-left: 10%;
+        margin-top: 5%;
+        color: blue;
+        text-align: center;
+       }
+       .pink-bg{
+        background-color: #FFC0CB;
+       }
+    </style>
+    <div id ="total">
+        <div id="top">
+            <ul>
+                <li><a href=""></a>회원가입</li>
+                <li><a href=""></a>제품정보</li>
+                <li><a href=""></a>게시판</li>
+                <li><a href=""></a>장바구니</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="top2">
+        장바구니 들어가는 부분.
+    </div>
+        <table class="product" border="1">
+            <tr>
+                <td class="pink-bg">제품번호</td>
+                <td width="200px">100</td>
+            </tr>
+            <tr>
+                <td class="pink-bg">제품이름</td>
+                <td><a href="product?no=100">shoes1</a></td>
+            </tr>
+            <tr>
+                <td class="pink-bg">제품설명</td>
+                <td>fun shoes1</td>
+            </tr>
+            <tr>
+                <td class="pink-bg">제품가격</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td class="pink-bg">제조회사</td>
+                <td>c1000</td>
+            </tr>
+            <tr>
+                <td class="pink-bg">제품이미지</td>
+                <td><img src="img/apple.png" alt=""></td>
+            </tr>
+        </table>
+    
+</body>
+</html>

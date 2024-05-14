@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 - grid</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: nowrap; /* 줄 바꿈 방지 */
+            overflow-x: auto; /* 가로 스크롤 추가 */
+            gap: 20px;
+            padding-bottom: 20px; /* 스크롤 공간 확보 */
+        }
+
+        .column {
+            flex: 0 0 auto; /* 기본 크기로 설정 */
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <div class="row">
+                <div><img src="img/road.png" alt=""></div>
+                <div><img src="img/today.png" alt=""></div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div><img src="img/elephant.png" alt=""></div>
+                <div><img src="img/youtube.png" alt=""></div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div><img src="img/sunset.png" alt=""></div>
+                <div><img src="img/pani.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

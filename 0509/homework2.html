@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .outer{
+            border: 5px;
+            border-style: solid;
+            border-color: gray;
+            display: flex;
+            background-color: #F3F3D7;
+            justify-content: center;
+            align-items: center; 
+            margin-top: 1%;
+        }
+        .box{
+            position: relative; 
+            flex-grow: 1;
+            text-align: center;
+        }
+        img{
+            display: block;
+            margin: auto; 
+            margin-bottom: 10px; 
+        }
+        p{
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0; 
+            position: absolute; 
+            top: -30px; 
+            left: 0; 
+            width: 100%; 
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="outer">
+        <div class="box" id="d1">
+            <img src="img/1.png" id="i1">
+            <p>우아하게!</p>
+        </div>
+        <div class="box" id="d2">
+            <img src="img/2.png" id="i2">
+            <p>달려보자고!</p>
+        </div>
+        <div class="box" id="d3">
+            <img src="img/3.png"id="i3">
+            <p>스피디하게!</p>
+        </div>
+    </div>
+
+</body>
+</html>
