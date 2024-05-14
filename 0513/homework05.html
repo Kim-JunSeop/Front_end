@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q5 - 함수</title>
+    <style>
+        .redHr {
+            border: 0;
+            height: 5px;
+            background-color: red;
+        }
+        input{
+            outline: 3px solid #0E63FC;
+        }
+        button{
+            background-color: #0E63FC;
+            color: white;
+        }
+            
+    </style>
+</head>
+<body>
+    <div>
+        <div>그림을 본 느낌은?</div>
+        <img src="img/baby.jpg" alt=""><br>
+        <input type="text" id="commentInput"><button onclick="addComment()">댓글 달기</button>
+        <hr class="redHr">
+        <div id="commentSection"></div>
+    </div>
+
+    <script>
+        function addComment() {
+            var comment = document.getElementById("commentInput").value;
+        
+            var commentSection = document.getElementById("commentSection");
+            var newComment = document.createElement("p");
+            newComment.textContent = comment;
+            commentSection.appendChild(newComment);
+            
+            var hr = document.createElement("hr");
+            hr.classList.add("redHr");
+            commentSection.appendChild(hr);
+            
+        }
+
+    </script>
+</body>
+</html>

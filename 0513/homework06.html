@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q6 - 함수</title>
+
+</head>
+<body>
+    <div>ID 입력 : </div>
+    <input type="text" id="idInput"><br>
+    <button onclick="checkID()">회원가입시 ID 중복 체크</button> <br><br>
+    <div id="idResult"></div> 
+
+    <div>전화번호 입력 : </div>
+    <input type="text" id="phoneInput"><br>
+    <button onclick="generateAuthCode()">인증번호 받기</button>
+    <div id="authCodeResult"></div> 
+
+    <script>
+        function checkID() {
+            var idInput = document.getElementById("idInput");
+            var id = idInput.value.trim(); 
+
+            var invalidIDs = ['root', 'admin', 'apple'];
+
+            if (invalidIDs.includes(id)) {
+                document.getElementById("idResult").textContent = "에러 메시지: 입력한 ID가 이미 존재합니다.";
+            } else {
+                document.getElementById("idResult").textContent = "ID가 사용 가능합니다.";
+            }
+        }
+
+        function generateAuthCode() {
+            var phoneInput = document.getElementById("phoneInput");
+            var phoneNumber = phoneInput.value.trim();
+
+            var prefix;
+            if (phoneNumber.startsWith("010")) {
+                prefix = "01";
+            } else if (phoneNumber.startsWith("011")) {
+                prefix = "02";
+            } else {
+                prefix = "03";
+            }
+            var randomDigits = Math.floor(Math.random() * 900) + 100;
+
+            var authCode = prefix + randomDigits;
+            document.getElementById("authCodeResult").textContent = "인증번호: " + authCode;
+        }
+    </script>
+</body>
+</html>
