@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 - 가변 파라미터</title>
+   
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        function addContact(name, phone, home = "없음", address = "없음", email = "없음", ...favoriteFoods) {
+            console.log(`Name: ${name}`);
+            console.log(`Phone: ${phone}`);
+            console.log(`Home: ${home}`);
+            console.log(`Address: ${address}`);
+            console.log(`Email: ${email}`);
+            console.log(`Favorite Foods: ${favoriteFoods.join(', ')}`);
+            
+            const output = document.getElementById('output');
+            output.innerHTML += `
+                <div class="contact">
+                    <p>name >> ${name}</p>
+                    <p>phone >> ${phone}</p>
+                    <p>home >> ${home}</p>
+                    <p>address >> ${address}</p>
+                    <p>email >> ${email}</p>
+                    <p>favoriteFoods >> ${favoriteFoods.join(', ')}</p>
+                </div>
+            `;
+             output.innerHTML += `<hr>`;
+        }
+
+        addContact("홍 길 동", "010-222-3331");
+        addContact("홍 길 동", "010-222-3331", "02-3422-9900", "서울시");
+        addContact("홍 길 동", "010-222-3331", "02-3422-9900", "서울시", "hero@email.com", "감자", "고구마");
+    </script>
+</body>
+</html>

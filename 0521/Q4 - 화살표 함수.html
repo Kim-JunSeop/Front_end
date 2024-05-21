@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q4 - 화살표 함수</title>
+  </head>
+  <body>
+    <script>
+      var obj = { result: 0 };
+      obj.add = function (x, y) {
+        const inner = () => {
+          this.result = x + y;
+        };
+        inner();
+      };
+
+      // 2. bind() 메서드 사용
+      obj.add = function (x, y) {
+        function inner() {
+          this.result = x + y;
+        }
+        inner.bind(this)();
+      };
+
+      obj.add(3, 4);
+
+      console.log(obj); // { result: 7 }
+      console.log(result); // 7
+    </script>
+  </body>
+</html>

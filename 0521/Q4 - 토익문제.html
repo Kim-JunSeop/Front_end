@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q4 - 토익문제</title>
+  </head>
+  <body>
+    <script>
+      const answerKey = [];
+      for (let i = 0; i < 1000; i++) {
+        answerKey.push(Math.floor(Math.random() * 4) + 1);
+      }
+
+      const myAnswers = [];
+      for (let i = 0; i < 1000; i++) {
+        myAnswers.push(Math.floor(Math.random() * 4) + 1);
+      }
+
+      let score = 0;
+      for (let i = 0; i < 999; i++) {
+        if (answerKey[i] === myAnswers[i]) {
+          score++;
+          console.log(`${i + 1} >> ${answerKey[i]} ${myAnswers[i]} --> 정답`);
+        } else {
+          console.log(`${i + 1} >> ${answerKey[i]} ${myAnswers[i]} --> 오답`);
+        }
+      }
+      console.log(`토익 점수: ${score}`);
+    </script>
+  </body>
+</html>

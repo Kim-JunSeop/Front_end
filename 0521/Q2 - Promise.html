@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q2 - Promise</title>
+  </head>
+  <body>
+    <script>
+      function getRandomNumbers() {
+        return new Promise((resolve, reject) => {
+          const num1 = Math.floor(Math.random() * 10) + 1; 
+          const num2 = Math.floor(Math.random() * 10) + 1;
+          resolve([num1, num2]);
+        });
+      }
+
+      getRandomNumbers()
+        .then((numbers) => {
+          console.log(numbers); 
+          return numbers[0];
+        })
+        .then((num1) => {
+          return getRandomNumbers().then((newNumbers) => {
+            console.log(newNumbers); 
+            return [num1, ...newNumbers]; 
+          });
+        })
+        .then((result) => {
+          console.log(result); 
+          const [num1, num2] = result;
+          console.log(`두 수의 합은 ${num1 + num2}`); 
+          console.log(`두 수의 곱은 ${num1 * num2}`); 
+        })
+        .catch((error) => {
+          console.error(`에러 발생함 → ${error}`);
+        });
+    </script>
+  </body>
+</html>

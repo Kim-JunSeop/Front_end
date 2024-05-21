@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q5 - 객체 리터럴</title>
+  </head>
+  <body>
+    <script>
+      const product = {
+        name: "에너자이저",
+        total_price: 5000,
+        discount_price: 4700,
+        one_price: 2350,
+        arrive_date: "내일(수)도착 보장",
+        rate: 50,
+        stack_money: 188,
+
+        applyDiscount: function () {
+          this.discount_price = this.total_price * 0.94; // 6% 할인
+        },
+
+        printInfo: function () {
+          console.log("할인을 하는 중입니다.");
+          console.log(`name >>  ${this.name}`);
+          console.log(`total_price >>  ${this.total_price}원`);
+          console.log(`discount_price >>  ${this.discount_price}원`);
+          console.log(`one_price >>  ${this.one_price}원`);
+          console.log(`arriver_data >>  ${this.arrive_date}`);
+          console.log(`rate >>  ${this.rate}`);
+          console.log(`stack_money >>  ${this.stack_money}원`);
+        },
+      };
+
+      product.applyDiscount();
+      product.printInfo();
+    </script>
+  </body>
+</html>

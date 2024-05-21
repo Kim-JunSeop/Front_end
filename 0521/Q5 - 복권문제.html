@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q5 - 복권문제</title>
+  </head>
+  <body>
+    <script>
+      function generateLotteryNumbers() {
+        let lottoNumbers = [];
+        while (lottoNumbers.length < 6) {
+          let randomNumber = Math.floor(Math.random() * 45) + 1;
+          if (!lottoNumbers.includes(randomNumber)) {
+            lottoNumbers.push(randomNumber);
+          }
+        }
+        return lottoNumbers;
+      }
+      function printLottery() {
+        let lottoNumbers = generateLotteryNumbers();
+        console.log("복권번호: " + '[' + lottoNumbers + ']');
+      }
+
+      printLottery();
+    </script>
+  </body>
+</html>

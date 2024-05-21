@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q1 - Promise</title>
+  </head>
+  <body>
+    <script>
+      console.log("Promise를 시작합니다.");
+
+      const askName = () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const name = prompt("너의 이름은?");
+            console.log("1 ==> 너의 이름은?");
+            if (name) {
+              resolve(name);
+              console.log(`2 ==> ${name}`);
+            } else {
+              reject("이름이 입력되지 않았습니다.");
+            }
+          }, 1000);
+        });
+      };
+
+      const askDestination = () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const destination = prompt("네가 가고 싶은 곳은?");
+            if (destination) {
+              resolve(destination);
+              console.log(`3 ==> ${destination}` );
+            } else {
+              reject("가고 싶은 곳이 입력되지 않았습니다.");
+            }
+          }, 1000);
+        });
+      };
+
+      askName()
+        .then((name) => {
+          console.log(`네가 가고 싶은 곳은?`);
+
+          return askDestination();
+        })
+        .then((destination) => {
+          console.log(`${destination}을 가기를 희망한다.`);
+        })
+        .catch((error) => {
+          console.error(`에러 발생함 → ${error}`);
+        });
+    </script>
+  </body>
+</html>
