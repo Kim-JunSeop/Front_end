@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+      
+        }
+    </style>
+</head>
+<body>
+    <h1>맛집 추천 지도</h1>
+    <!-- 주소 : <input type="text" id="address" size="50" value="서울 광진구 능동로 195-16"><br>
+    이름 : <input type="text" id="name" size="50" value="KB국민은행 세종대"><br>
+    <button onclick="updateAddress();">입력</button><br><br> -->
+    <section id="container">
+        <div id="map" style="width:100%;height:400px;"></div>
+    </section>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aac080908bc50746898182a21a4a4e15
+    "></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(37.547850180, 127.074454848), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+        // 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+        var positions = [
+            {
+                name: '빠오즈푸 본점',
+                address: '서울특별시 광진구 광나루로 373',
+                desc: '평가: 중식 맛집!',
+                url: 'https://map.naver.com/p/entry/place/20757891?c=15.00,0,0,0,dh',
+                lat : 37.548057,
+                lng : 127.0715501,
+            },
+            {
+                name: '은혜즉석떡볶이',
+                address: '서울 광진구 광나루로 381-1',
+                desc: '평가: 맛있는 떡볶이지만 양은 적음',
+                url: 'https://map.naver.com/p/entry/place/20912981?c=17.44,0,0,0,dh',
+                lat : 37.5480525,
+                lng : 127.0723393,
+            },
+            {
+                name: '미식반점',
+                address: '서울 광진구 군자로 70',
+                desc: '탕수육 맛집',
+                url: 'https://map.naver.com/p/search/%EB%AF%B8%EC%8B%9D%EB%B0%98%EC%A0%90/place/1472793185?placePath=?entry=pll&from=nx&fromNxList=true&searchType=place&c=15.00,0,0,0,dh',
+                lat : 37.549362932583, 
+                lng : 127.07089655132,
+            },
+            {
+                name: '알고',
+                address: '서울특별시 광진구 군자동 373-8',
+                desc: '평가: 파스타 맛집',
+                url: 'https://map.naver.com/p/entry/place/810682299?c=15.31,0,0,0,dh',
+                lat : 37.5480765,
+                lng : 127.0728497,
+            },
+            {
+                name: '화심',
+                address: '서울 광진구 광나루로 379 2층 화심',
+                desc: '평가: 맛있는 이자카야',
+                url: 'https://map.naver.com/p/entry/place/35258300?c=17.84,0,0,0,dh',
+                lat : 37.5481754,
+                lng : 127.0720189,
+            },
+
+        ];
+        var latSum = 0, latAvg = 0.0;
+        var lngSum = 0, lngAvg = 0.0;
+        positions.forEach((obj)=>{
+            latSum += obj.lat;
+            lngSum += obj.lng;
+        });
+        latAvg = latSum / positions.length;
+        lngAvg = lngSum / positions.length;
+        var mapContainer = document.getElementById('map'); // 지도를 표시할 div
+        var mapOption = {
+                center: new kakao.maps.LatLng(latAvg, lngAvg), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
+            };
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+        positions.forEach((obj)=>{
+              // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: new kakao.maps.LatLng(obj.lat, obj.lng) // 마커의 위치
+            });
+            var contentHtml = `<div class="wrap">
+                <div class="info">
+                    <div class="title">
+                        ${obj.name}
+                    </div>
+                    <div class="body">
+                        <div class="img">
+                            <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumnail.png" width="73" height="70">
+                       </div>
+                        <div class="desc">
+                            <div class="ellipsis">${obj.address}</div>
+                            <div class="jibun ellipsis">${obj.desc}</div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            obj.content = contentHtml;
+            // 마커에 표시할 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: obj.content // 인포윈도우에 표시할 내용
+            });
+            // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+            // 이벤트 리스너로는 클로저를 만들어 등록합니다
+            // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+            kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow, obj));
+            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        });
+        // 클릭 이벤트를 만드는 클로저 함수입니다.
+        function makeClickListener(map, marker, infowindow, obj) {
+            return function() {
+                location = obj.url;
+            };
+        }
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
+        }
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+        function makeOutListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }
+        function updateAddress() {
+            var address = document.getElementById('address').value;
+            var name = document.getElementById('name').value;
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                mapOption = {
+                    center: new kakao.maps.LatLng(37.547850180, 127.074454848), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+            // 지도를 생성합니다
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao.maps.services.Geocoder();
+            // 주소로 좌표를 검색합니다
+            geocoder.addressSearch(address, function (result, status) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === kakao.maps.services.Status.OK) {
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    // 결과값으로 받은 위치를 마커로 표시합니다
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords
+                    });
+                    // 인포윈도우로 장소에 대한 설명을 표시합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
+                    });
+                    infowindow.open(map, marker);
+                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                    map.setCenter(coords);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
