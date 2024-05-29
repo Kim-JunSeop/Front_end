@@ -9,7 +9,7 @@
         <h2>관심있는 K-POP 가수?</h2>
         <hr />
         <ul>
-            <CheckboxItem v-for="idol in idols" :idol="idol" />
+            <CheckboxItem v-for="idol in idols" :key="idol.id" :idol="idol" />
         </ul>
     </div>
 </template>
